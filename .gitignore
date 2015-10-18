@@ -1,0 +1,10 @@
+.DS_Store
+bower_components
+build
+node_modules
+jspm_packages
+npm-debug.log
+*.sublime-workspace
+.idea
+karma
+dist

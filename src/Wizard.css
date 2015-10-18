@@ -1,0 +1,40 @@
+.react-gen-wizard {
+  padding: 1em;
+}
+
+.react-gen-wizard ul.breadcrumbs {
+  list-style-type: none;
+  padding: 0;
+}
+
+.react-gen-wizard ul.breadcrumbs li {
+  display: inline;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  padding: 0 0.5em 0 0;
+}
+
+.react-gen-wizard ul.breadcrumbs li.active {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.react-gen-wizard ul.breadcrumbs li:after {
+  font-family: FontAwesome;
+  content: "\f054";
+  color: #FFAB40;
+  padding: 0 0.3em;
+  font-weight: normal;
+}
+
+.react-gen-wizard .component-wrapper .buttons {
+  clear: both;
+}
+
+.react-gen-wizard .component-wrapper .button .icon-prev {
+  float: left;
+}
+
+.react-gen-wizard .component-wrapper .buttons .icon-next {
+  float: right;
+}
