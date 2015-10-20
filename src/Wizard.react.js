@@ -5,7 +5,7 @@ export default class Wizard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {currentComponentIndex: 0, 
-                  data: props.data};
+                  data: props.initalData};
   }
 
   _getComponentsBreadcrumbs() {
@@ -81,3 +81,12 @@ export default class Wizard extends React.Component {
     );
   }
 }
+
+Wizard.propTypes = {
+  components: React.PropTypes.arrayOf(React.PropTypes.shape({
+                                        name: React.PropTypes.string,
+                                        component: React.PropTypes.object
+                                      })).isRequired,
+  onFinish: React.PropTypes.func.isRequired,
+  initialData: React.PropTypes.object
+};
