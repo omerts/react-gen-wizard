@@ -50,16 +50,20 @@ export default class Wizard extends React.Component {
 
     let currentComponent = 
       React.createElement(this.props.components[this.state.currentComponentIndex].component, 
-                          {onNextEnded: this.onNextEnded.bind(this),
-                           onPrevEnded: this.onPrevEnded.bind(this),
-                           data: this.state.data,
-                           ref: 'currentComponent'});
+                          Object.assign(this.props.components[this.state.currentComponentIndex].additionalProps || {},
+                                        {onNextEnded: this.onNextEnded.bind(this),
+                                         onPrevEnded: this.onPrevEnded.bind(this),
+                                         data: this.state.data,
+                                         ref: 'currentComponent'}));
 
     return (
       <div className='react-gen-wizard'>
         <ul className='breadcrumbs'>
           {this._getComponentsBreadcrumbs()}
         </ul>
+        <h3 className='component-title'>
+          {this.props.components[this.state.currentComponentIndex].name}
+        </h3>
         <div className='component-wrapper'>
           <div className='current-component'>
             {currentComponent}
@@ -84,8 +88,9 @@ export default class Wizard extends React.Component {
 
 Wizard.propTypes = {
   components: React.PropTypes.arrayOf(React.PropTypes.shape({
-                                        name: React.PropTypes.string,
-                                        component: React.PropTypes.object
+                                        name: React.PropTypes.string.isRequired,
+                                        component: React.PropTypes.object.isRequired,
+                                        additionalProps: React.PropTypes.object
                                       })).isRequired,
   onFinish: React.PropTypes.func.isRequired,
   initialData: React.PropTypes.object
