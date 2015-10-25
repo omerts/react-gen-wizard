@@ -48,8 +48,10 @@ export default class Wizard extends React.Component {
       (this.state.currentComponentIndex 
        !== this.props.components.length - 1) ? 'arrow-right' : 'paper-plane';
 
-    let currentComponent = 
-      React.createElement(this.props.components[this.state.currentComponentIndex].component, 
+    let currentActiveItem = this.props.components[this.state.currentComponentIndex];
+
+    let currentComponent =
+      React.createElement(currentActiveItem.component,
                           Object.assign(this.props.components[this.state.currentComponentIndex].additionalProps || {},
                                         {onNextEnded: this.onNextEnded.bind(this),
                                          onPrevEnded: this.onPrevEnded.bind(this),
@@ -62,24 +64,27 @@ export default class Wizard extends React.Component {
           {this._getComponentsBreadcrumbs()}
         </ul>
         <h3 className='component-title'>
-          {this.props.components[this.state.currentComponentIndex].name}
+          {currentActiveItem.name}
         </h3>
         <div className='component-wrapper'>
           <div className='current-component'>
             {currentComponent}
           </div>
-          <div className='buttons'>
-            {(this.state.currentComponentIndex !== 0) &&
-              <IconButton className='icon-prev'
-                          iconClassName='fa fa-arrow-left'
+          {currentComponent}
+          {currentActiveItem.showButtons &&
+            <div className='buttons'>
+              {(this.state.currentComponentIndex !== 0) &&
+                <IconButton className='icon-prev'
+                            iconClassName='fa fa-arrow-left'
+                            mini={true}
+                            onClick={this._callOnPrev.bind(this)} />
+              }
+              <IconButton className='icon-next'
+                          iconClassName={nextClass}
                           mini={true}
-                          onClick={this._callOnPrev.bind(this)} />
-            }
-            <IconButton className='icon-next'
-                        iconClassName={nextClass}
-                        mini={true}
-                        onClick={this._callOnNext.bind(this)} />
-          </div>
+                          onClick={this._callOnNext.bind(this)} />
+            </div>
+          }
         </div>
       </div>
     );
@@ -89,7 +94,11 @@ export default class Wizard extends React.Component {
 Wizard.propTypes = {
   components: React.PropTypes.arrayOf(React.PropTypes.shape({
                                         name: React.PropTypes.string.isRequired,
-                                        component: React.PropTypes.object.isRequired,
+                                        component: React.PropTypes.shape({
+                                          onNext: React.PropTypes.func,
+                                          onPrev: React.PropTypes.func                                          
+                                        }).isRequired,
+                                        showButtons: React.PropTypes.bool,
                                         additionalProps: React.PropTypes.object
                                       })).isRequired,
   onFinish: React.PropTypes.func.isRequired,
