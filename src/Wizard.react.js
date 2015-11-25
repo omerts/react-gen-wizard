@@ -1,28 +1,48 @@
 import React from 'react';
 import {IconButton} from 'material-ui';
+import pathval from 'pathval';
 
 export default class Wizard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentComponentIndex: 0, 
-                  data: props.initalData};
+    this._originalData = props.initalData || {};
+
+    this.state = {currentComponentIndex: 0,
+                  maxComponentIndexReached: 0,
+                  data: this._originalData};
+  }
+
+  _breadcrumbClicked(index) {
+    this.state.currentComponentIndex = index;
+    this.setState(this.state);
   }
 
   _getComponentsBreadcrumbs() {
-    return this.props.components.map((component) => {
-      let className = 
+    return this.props.components.slice(0, (this.state.maxComponentIndexReached + 1))
+    .map(((component, index) => {
+      let className =
         (this.props.components[this.state.currentComponentIndex] === 
          component) ? 'active' : 'inactive';
+      
+      let title = (component.breadcrumbNamePath &&
+                   pathval.get(this, component.breadcrumbNamePath)) ||
+                  component.name;
 
-      return <li className={className}>{component.name}</li>;
-    });
+      return <li key={component.name} className={className}
+                 onClick={this._breadcrumbClicked.bind(this, index)}>{title}</li>;
+    }).bind(this));
   }
 
   onNextEnded(data) {
     if (this.state.currentComponentIndex === this.props.components.length - 1) {
+      this.state = {currentComponentIndex: 0,
+                    maxComponentIndexReached: 0,
+                    data: this._originalData};
       this.props.onFinish(this.state.data);
+      this.setState(this.state);
     } else {
       this.state.currentComponentIndex++;
+      this.state.maxComponentIndexReached++;
       this.state.data = data;
       this.setState(this.state);
     }
@@ -51,7 +71,7 @@ export default class Wizard extends React.Component {
     let currentActiveItem = this.props.components[this.state.currentComponentIndex];
 
     let currentComponent =
-      React.createElement(currentActiveItem.component,
+      React.createElement(this.props.components[this.state.currentComponentIndex].component,
                           Object.assign(this.props.components[this.state.currentComponentIndex].additionalProps || {},
                                         {onNextEnded: this.onNextEnded.bind(this),
                                          onPrevEnded: this.onPrevEnded.bind(this),
@@ -70,8 +90,8 @@ export default class Wizard extends React.Component {
           <div className='current-component'>
             {currentComponent}
           </div>
-          {currentComponent}
-          {currentActiveItem.showButtons &&
+          {(currentActiveItem.showButtons === undefined || // If undefined default to true
+            currentActiveItem.showButtons) &&
             <div className='buttons'>
               {(this.state.currentComponentIndex !== 0) &&
                 <IconButton className='icon-prev'
@@ -94,12 +114,10 @@ export default class Wizard extends React.Component {
 Wizard.propTypes = {
   components: React.PropTypes.arrayOf(React.PropTypes.shape({
                                         name: React.PropTypes.string.isRequired,
-                                        component: React.PropTypes.shape({
-                                          onNext: React.PropTypes.func,
-                                          onPrev: React.PropTypes.func                                          
-                                        }).isRequired,
+                                        component: React.PropTypes.func.isRequired,
                                         showButtons: React.PropTypes.bool,
-                                        additionalProps: React.PropTypes.object
+                                        additionalProps: React.PropTypes.object,
+                                        breadcrumbNamePath: React.PropTypes.string
                                       })).isRequired,
   onFinish: React.PropTypes.func.isRequired,
   initialData: React.PropTypes.object
