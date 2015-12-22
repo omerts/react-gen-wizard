@@ -76,6 +76,6 @@ Each component configuration object has the following shape:
   ```
 - ***name*** - Is used as the steps title, and in case breadcrumbNamePath doesn't exist, will be used in breadcrumbs.
 - ***component*** - Your step component.
-- ***additionalProps*** - Props you can inject directly into the current step.
-- ***showButtons*** - Should the next and previous buttons be shown. This is used for cases your step, should automatically move to the next, or previous, step. The automatic move would occur by your component raising the onNextEnded() || onPrevEnded().
-- ***breadcrumbNamePath*** - Path to property in the passed around data object, that will be used as the breadcrumb title 
+- ***additionalProps***(optional) - Props you can inject directly into the current step.
+- ***showButtons*** (optional, default true) - Should the next and previous buttons be shown. This is used for cases your step, should automatically move to the next, or previous, step. The automatic move would occur by your component raising the onNextEnded() || onPrevEnded().
+- ***breadcrumbNamePath***(optional) - Path to property in the passed around data object, that will be used as the breadcrumb title 
