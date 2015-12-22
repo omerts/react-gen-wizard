@@ -44,4 +44,5 @@ export default class TestComponent extends React.Component {
 }
 ```
 
+##Using the wizard component##
 
