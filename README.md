@@ -14,7 +14,7 @@ npm install react-gen-wizard
 ## How to use ##
 ### Writing your component ###
 Each step in the wizard is a react component. 
-Your component needs to implement two methods, onPrev() & onNext(). These methods will be called if the previous, or next, button has been clicked while the component was active. These methods are used to add new, change, and/or reset data, for the next or previous step. Two callback props, onPrevEnded(dataObj) & onNextEnded(dataObj), are injected into your component, and should be raised at the end of onPrev, and onNext. The dataObj parameter, will be passed to the next, or previous, component, depending on what the user clicked.
+Your component needs to implement two methods, *onPrev()* & *onNext()*. These methods will be called if the previous, or next, button has been clicked while the component was active. These methods are used to add new, change, and/or reset data, for the next or previous step. Two callback props, *onPrevEnded(dataObj)* & *onNextEnded(dataObj)*, are injected into your component, and should be raised at the end of onPrev, and onNext. The dataObj parameter, will be passed to the next, or previous, component, depending on what the user clicked.
 
 ####Example step component:####
 ```javascript
