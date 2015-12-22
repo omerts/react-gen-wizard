@@ -44,5 +44,38 @@ export default class TestComponent extends React.Component {
 }
 ```
 
+## Style ##
+In order to use the default style, import the css/Wizard.css file into your page. 
+
 ##Using the wizard component##
 
+```javascript
+import Wizard from 'react-gen-wizard';
+
+export default class TestWizard extends React.Component {
+  render() {
+    return <Wizard components={acquireComponents} onFinish={this.props.onFinish} />;
+  }
+}
+```
+
+- ***onFinish(data)*** - Will be raised once the last step raises the onNextEnded callback. It receives the data from the last step.
+- ***components***     - Configuration of components that will be used as steps. See below.
+
+###Configuring your steps components###
+The Wizard component, has a property called components, which is an array of objects, that configure each wizard step.
+Each component configuration object has the following shape:
+```javascript
+{
+    name: 'Title',
+    component: StepComponentName,
+    additionalProps: {},
+    showButtons: true,
+    breadcrumbNamePath: 'prop.to.show'
+  }
+  ```
+- ***name*** - Is used as the steps title, and in case breadcrumbNamePath doesn't exist, will be used in breadcrumbs.
+- ***component*** - Your step component.
+- ***additionalProps*** - Props you can inject directly into the current step.
+- ***showButtons*** - Should the next and previous buttons be shown. This is used for cases your step, should automatically move to the next, or previous, step. The automatic move would occur by your component raising the onNextEnded() || onPrevEnded().
+- ***breadcrumbNamePath*** - Path to property in the passed around data object, that will be used as the breadcrumb title 
