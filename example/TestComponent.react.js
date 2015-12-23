@@ -1,16 +1,21 @@
 import React from 'react';
 
 export default class TestComponent extends React.Component {
+  _getData(step) {
+    var dataToPass = Object.assign({}, this.props.data);
+    dataToPass.step = step;
+
+    return dataToPass;
+  }
+
   onNext() {
     console.log('onNext called');
-    this.props.data.step = ++this.props.data.step;
-    this.props.onNextEnded(this.props.data);
+    this.props.onNextEnded(this._getData(++this.props.data.step));
   }
 
   onPrev() {
-    console.log('onPrev called');
-    this.props.data.step = --this.props.data.step;
-    this.props.onPrevEnded(this.props.data);
+    console.log('onPrev called');    
+    this.props.onPrevEnded(this._getData(--this.props.data.step));
   }
 
   render() {

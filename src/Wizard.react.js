@@ -25,8 +25,8 @@ export default class Wizard extends React.Component {
          component) ? 'active' : 'inactive';
       
       let title = (component.breadcrumbNamePath &&
-                   pathval.get(this, component.breadcrumbNamePath)) ||
-                  component.name;
+                   pathval.get(this.state, component.breadcrumbNamePath)) ||
+                   component.name;
 
       return <li key={component.name} className={className}
                  onClick={this._breadcrumbClicked.bind(this, index)}>{title}</li>;

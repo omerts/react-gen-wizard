@@ -16,9 +16,24 @@
   ],
   "author": "Omer Spalter",
   "license": "ISC",
+  "peerDependencies": {
+    "react": "^0.13.3"
+  },
   "dependencies": {
     "material-ui": "^0.12.3",
-    "pathval": "^0.1.1",
-    "react": "^0.13.3"
+    "pathval": "^0.1.1"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "example"
+    },
+    "dependencies": {
+      "react": "npm:react@^0.14.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
