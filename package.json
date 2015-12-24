@@ -1,0 +1,30 @@
+{
+  "name": "react-gen-wizard",
+  "version": "0.0.3",
+  "description": "Generic react component for creating wizards, and passing data between steps",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omerts/react-gen-wizard.git"
+  },
+  "keywords": [
+    "react",
+    "wizard"
+  ],
+  "author": "Omer Spalter",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^0.14.3"
+  },
+  "dependencies": {
+    "font-awesome": "^4.5.0",
+    "material-ui": "^0.14.0-rc2",
+    "pathval": "^0.1.1",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-tap-event-plugin": "^0.2.1"
+  }
+}

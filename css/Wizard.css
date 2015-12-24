@@ -1,0 +1,60 @@
+
+.react-gen-wizard {
+  height: 100%;
+}
+
+.react-gen-wizard ul.breadcrumbs {
+  list-style-type: none;
+  padding: 0 0 0 1em;
+}
+
+.react-gen-wizard ul.breadcrumbs li {
+  display: inline;
+  font-size: 1em;
+  text-transform: uppercase;
+  padding: 0 0.5em 0 0;
+  cursor: pointer;
+}
+
+.breadcrumbs .active {
+    font-weight: 700;
+  
+}
+
+.react-gen-wizard ul.breadcrumbs li:after {
+  font-family: FontAwesome;
+  content: "\f054";
+  color: #FFAB40;
+  padding: 0 0.3em;
+  font-weight: normal;
+}
+
+.react-gen-wizard .component-wrapper .buttons {
+  clear: both;
+  font-size: 2em;
+  opacity: 0.7;
+}
+
+.react-gen-wizard .component-wrapper .button .icon-prev {
+  float: left;
+}
+
+.react-gen-wizard .component-wrapper .buttons .icon-next {
+  float: right;
+}
+
+.react-gen-wizard .component-title {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/$orange+2,EAEAEA+2 */
+  background: #FFAB40; /* Old browsers */
+  background: -moz-linear-gradient(left,  #FFAB40 0.5em, #eaeaea 0.5em); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0.5em,#FFAB40), color-stop(0.8em,#eaeaea)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #FFAB40 0.5em, #eaeaea 0.5em); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #FFAB40 0.5em, #eaeaea 0.5em); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #FFAB40 0.5em, #eaeaea 0.5em); /* IE10+ */
+  background: linear-gradient(to right,  #FFAB40 0.5em, #eaeaea 0.5em); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFAB40', endColorstr='#eaeaea',GradientType=1 ); /* IE6-9 */
+  font-size: 1.6em;
+  font-weight: normal;
+  text-transform: uppercase;
+  padding: 0.7em 1em 0.7em 2em;
+}

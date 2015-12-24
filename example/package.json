@@ -1,0 +1,14 @@
+{
+  "jspm": {
+    "dependencies": {
+      "react": "npm:react@^0.14.3",
+      "react-dom": "npm:react-dom@^0.14.3",
+      "react-gen-wizard": "npm:react-gen-wizard@^0.0.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
