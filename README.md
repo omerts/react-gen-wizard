@@ -1,4 +1,4 @@
-#!!!This is work in progress, and should not yet be used. This readme, is currently invalid.
+###Only React 0.14, and up, is supported.###
 
 # react-gen-wizard
 Generic react component for creating wizards, and passing arbitrary data between the wizard's steps.
@@ -79,3 +79,24 @@ Each component configuration object has the following shape:
 - ***additionalProps***(optional) - Props you can inject directly into the current step.
 - ***showButtons*** (optional, default true) - Should the next and previous buttons be shown. This is used for cases your step, should automatically move to the next, or previous, step. The automatic move would occur by your component raising the onNextEnded() || onPrevEnded().
 - ***breadcrumbNamePath***(optional) - Path to property in the passed around data object, that will be used as the breadcrumb title 
+
+## Example Code ##
+The example folder contains an example jspm project.
+
+cd into the example folder
+
+Install jspm & jspm-server
+```
+npm install jspm jspm-server
+```
+
+Install dependencies
+```
+jspm install
+```
+
+Run
+```
+jspm-server
+```
+
