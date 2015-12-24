@@ -1,6 +1,6 @@
 {
   "name": "react-gen-wizard",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Generic react component for creating wizards, and passing data between steps",
   "main": "main.js",
   "scripts": {
