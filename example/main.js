@@ -1,5 +1,6 @@
 import React from 'react';
-import Wizard from '../src/Wizard.react';
+import ReactDOM from 'react-dom';
+import Wizard from 'react-gen-wizard';
 import TestComponent from './TestComponent.react';
 
 // Component will get data from props.data, and will have to implement
@@ -8,7 +9,8 @@ let testdata = [{name: 'Step 1', component: TestComponent},
                 {name: 'Step 2', component: TestComponent},
                 {name: 'Step 3', component: TestComponent}];
 
-React.render(<Wizard components={testdata} data={{step: 1}} />,
-             document.getElementById('example'), () => {
-               console.log('rendered');
-             });
+ReactDOM.render(<Wizard components={testdata} data={{step: 1}} onFinish={() => {location.reload();}} />,
+                 document.getElementById('example'), () => {
+                   console.log('rendered');
+                 });
+

@@ -22,3 +22,4 @@ export default class TestComponent extends React.Component {
     return <div>Hello I am just a test component :). I am step {this.props.data.step}</div>;
   }
 }
+
