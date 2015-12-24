@@ -59,8 +59,8 @@ export default class TestWizard extends React.Component {
 }
 ```
 
-- ***onFinish(data)*** - Will be raised once the last step raises the onNextEnded callback. It receives the data from the last step.
-- ***components***     - Configuration of components that will be used as steps. See below.
+- ***onFinish(data)*** - Required. Will be raised once the last step raises the onNextEnded callback. It receives the data from the last step.
+- ***components***     - Required. Configuration of components that will be used as steps. See below.
 
 ###Configuring your steps components###
 The Wizard component, has a property called components, which is an array of objects, that configure each wizard step.
