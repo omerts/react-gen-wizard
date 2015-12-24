@@ -1,4 +1,4 @@
-#!!!This is work in progress, and should not yet be used. This readme, is currently invalid.
+###Only React 0.14, and up, is supported.###
 
 # react-gen-wizard
 Generic react component for creating wizards, and passing arbitrary data between the wizard's steps.
@@ -59,8 +59,8 @@ export default class TestWizard extends React.Component {
 }
 ```
 
-- ***onFinish(data)*** - Will be raised once the last step raises the onNextEnded callback. It receives the data from the last step.
-- ***components***     - Configuration of components that will be used as steps. See below.
+- ***onFinish(data)*** - *Required.* Will be raised once the last step raises the onNextEnded callback. It receives the data from the last step.
+- ***components***     - *Required.* Configuration of components that will be used as steps. See below.
 
 ###Configuring your steps components###
 The Wizard component, has a property called components, which is an array of objects, that configure each wizard step.
@@ -74,8 +74,29 @@ Each component configuration object has the following shape:
     breadcrumbNamePath: 'prop.to.show'
   }
   ```
-- ***name*** - Is used as the steps title, and in case breadcrumbNamePath doesn't exist, will be used in breadcrumbs.
-- ***component*** - Your step component.
-- ***additionalProps***(optional) - Props you can inject directly into the current step.
-- ***showButtons*** (optional, default true) - Should the next and previous buttons be shown. This is used for cases your step, should automatically move to the next, or previous, step. The automatic move would occur by your component raising the onNextEnded() || onPrevEnded().
-- ***breadcrumbNamePath***(optional) - Path to property in the passed around data object, that will be used as the breadcrumb title 
+- ***name*** - *Required.* Is used as the steps title, and in case breadcrumbNamePath doesn't exist, will be used in breadcrumbs.
+- ***component*** - *Required.* Your step component.
+- ***additionalProps*** - *Optional.* Props you can inject directly into the current step.
+- ***showButtons*** - *Optional, default true.* Should the next and previous buttons be shown. This is used for cases your step, should automatically move to the next, or previous, step. The automatic move would occur by your component raising the onNextEnded() || onPrevEnded().
+- ***breadcrumbNamePath*** - *Optional.* Path to property in the passed around data object, that will be used as the breadcrumb title. This can be used if you would like to show user data received from a step, in the breadcrumbs.
+
+## Example Code ##
+The example folder contains an example jspm project.
+
+cd into the example folder
+
+Install jspm & jspm-server
+```
+npm install jspm jspm-server
+```
+
+Install dependencies
+```
+jspm install
+```
+
+Run
+```
+jspm-server
+```
+
