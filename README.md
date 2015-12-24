@@ -1,10 +1,8 @@
-###Only React 0.14, and up, is supported.###
-
 # react-gen-wizard
 Generic react component for creating wizards, and passing arbitrary data between the wizard's steps.
 
 ## Prerequisites ##
-- React 0.13, and above
+- React 0.14, and above
 
 ## Installation ##
 ```
