@@ -5,7 +5,7 @@ import pathval from 'pathval';
 export default class Wizard extends React.Component {
   constructor(props) {
     super(props);
-    this._originalData = props.initalData || {};
+    this._originalData = props.initialData || {};
 
     this.state = {currentComponentIndex: 0,
                   maxComponentIndexReached: 0,
